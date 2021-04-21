@@ -1,4 +1,4 @@
-# SSR react configuration
+# React calculator with jest testing
 ## Description
 This project shows a calculator builded with react and tested with testing-library and jest.
 
