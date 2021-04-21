@@ -34,7 +34,7 @@ const styles = {
 const App = () => {
   const { store, dispatch } = useContext(CalculatorContext)
   useEffect(() => {
-    if (store.data.length === 4) {
+    if (store.data.length === 4 && !store.error) {
       dispatch({ action: store.data[1] })
     }
   }, [store])

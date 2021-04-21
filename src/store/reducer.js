@@ -32,7 +32,7 @@ const Reducer = (state, action) => {
         if (!digitCheck(state.operator)) return { ...state }
         return { ...state, result: value, operator: value }
       }
-      if (action.value === 'AC') return { data: [], result: 0, operator: 0 }
+      if (action.value === 'AC') return { data: [], result: 0, operator: 0, error: false }
       if (action.value === '±') {
         return {
           ...state,
