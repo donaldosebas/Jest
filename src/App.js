@@ -42,7 +42,7 @@ const App = () => {
     <div style={styles.container}>
       <input
         readOnly="true"
-        value={store.result}
+        value={store.error ? 'ERROR' : store.result}
         style={styles.screen}
       />
       {values.map((item, i) => (

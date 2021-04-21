@@ -1,14 +1,16 @@
 const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 const Reducer = (state, action) => {
+  const digitCheck = (value) => value.toString().length < 9
   const operation = (result) => {
     const data = [result, state.data[3]]
+    if (!digitCheck(result)) return { error: true, result: 0, operator: 0, data: [] }
     if (state.data[3] === '=') {
       return {
         ...state,
         result,
         data: [],
-        operator: 0,
+        operator: result,
       }
     }
     return { result, data, operator: 0 }
@@ -22,9 +24,12 @@ const Reducer = (state, action) => {
       return operation(state.data[0] * state.data[2])
     case '÷':
       return operation(state.data[0] / state.data[2])
+    case '%':
+      return operation(state.data[0] % state.data[2])
     case 'VALUE':
       if (numbers.includes(action.value)) {
-        const value = (state.operator * 10) + parseInt(action.value)
+        const value = state.operator >= 0 ? (state.operator * 10) + parseInt(action.value) : (state.operator * 10) - parseInt(action.value)
+        if (!digitCheck(state.operator)) return { ...state }
         return { ...state, result: value, operator: value }
       }
       if (action.value === 'AC') return { data: [], result: 0, operator: 0 }
