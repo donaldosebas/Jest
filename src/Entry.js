@@ -1,8 +1,7 @@
-import React, { createContext, useReducer } from 'react'
+import React, { useReducer } from 'react'
 import App from './App'
 import reducer from './store/reducer'
-
-export const CalculatorContext = createContext()
+import { CalculatorContext } from './store/StoreProvider'
 
 const Entry = () => {
   const [store, dispatch] = useReducer(reducer, {

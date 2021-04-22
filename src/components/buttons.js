@@ -21,7 +21,11 @@ const styles = {
   },
 }
 
-const Button = ({ value, color, dispatch }) => {
+const Button = ({
+  value,
+  color,
+  dispatch,
+}) => {
   const styleColor = () => {
     switch (color) {
       case 'orange':

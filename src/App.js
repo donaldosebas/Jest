@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import Button from './components/buttons'
-import { CalculatorContext } from './Entry'
+import { CalculatorContext } from './store/StoreProvider'
 
 const values = [
   ['AC', '±', '%', '<'],
@@ -29,6 +29,7 @@ const styles = {
     color: 'white',
     textAlign: 'right',
     fontSize: '80px',
+    textSizeAdjust: 'auto',
   },
 }
 const App = () => {
@@ -41,20 +42,19 @@ const App = () => {
   return (
     <div style={styles.container}>
       <input
-        readOnly="true"
         value={store.error ? 'ERROR' : store.result}
         style={styles.screen}
       />
       {values.map((item, i) => (
-        <div style={styles.row}>
+        <div key={item} style={styles.row}>
           {item.map((value, j) => {
             if (j === 3) {
-              return <Button value={value} color="orange" dispatch={dispatch} />
+              return <Button id={j} value={value} color="orange" dispatch={dispatch} />
             }
             if (i === 0) {
-              return <Button value={value} color="grey" dispatch={dispatch} />
+              return <Button id={j} value={value} color="grey" dispatch={dispatch} />
             }
-            return <Button value={value} color="lightgrey" dispatch={dispatch} />
+            return <Button id={j} value={value} color="lightgrey" dispatch={dispatch} />
           })}
         </div>
       ))}
