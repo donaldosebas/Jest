@@ -30,7 +30,7 @@ module.exports = {
       templateContent: () => `
         <html>
           <head>
-            <title>React app</title>
+            <title>Calculator</title>
           </head>
           <body>
             <div id="root"></div>

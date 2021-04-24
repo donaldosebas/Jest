@@ -1,5 +1,6 @@
 const Reducer = (state, action) => {
   const valueUpdate = (value) => {
+    if (typeof (state.operator) === 'string') return `${state.operator}${value}`
     const operator = state.operator * 10
     const intValue = parseInt(value, 10)
     return state.operator >= 0 ? operator + intValue : operator - intValue
@@ -59,7 +60,14 @@ const Reducer = (state, action) => {
           operator: state.result * -1,
         }
       }
-      state.data.push(state.operator)
+      if (action.value === '.') {
+        return {
+          ...state,
+          result: `${state.result}.`,
+          operator: `${state.result}.`,
+        }
+      }
+      state.data.push(parseFloat(state.operator, 10))
       state.data.push(action.value)
       return { ...state, result: 0, operator: 0 }
     default:

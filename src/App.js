@@ -3,7 +3,7 @@ import Button from './components/buttons'
 import { CalculatorContext } from './store/StoreProvider'
 
 const values = [
-  ['AC', '±', '%', '<'],
+  ['AC', '±', '%', ''],
   [7, 8, 9, '÷'],
   [4, 5, 6, '×'],
   [1, 2, 3, '-'],
@@ -28,7 +28,7 @@ const styles = {
     backgroundColor: 'black',
     color: 'white',
     textAlign: 'right',
-    fontSize: '80px',
+    fontSize: '4vh',
     textSizeAdjust: 'auto',
   },
 }
