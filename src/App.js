@@ -4,10 +4,10 @@ import { CalculatorContext } from './store/StoreProvider'
 
 const values = [
   ['AC', '±', '%', '<'],
-  ['7', '8', '9', '÷'],
-  ['4', '5', '6', '×'],
-  ['1', '2', '3', '-'],
-  ['0', '.', '=', '+'],
+  [7, 8, 9, '÷'],
+  [4, 5, 6, '×'],
+  [1, 2, 3, '-'],
+  [0, '.', '=', '+'],
 ]
 
 const styles = {
@@ -42,6 +42,7 @@ const App = () => {
   return (
     <div style={styles.container}>
       <input
+        readOnly
         value={store.error ? 'ERROR' : store.result}
         style={styles.screen}
       />
@@ -49,12 +50,12 @@ const App = () => {
         <div key={item} style={styles.row}>
           {item.map((value, j) => {
             if (j === 3) {
-              return <Button id={j} value={value} color="orange" dispatch={dispatch} />
+              return <Button value={value} color="orange" dispatch={dispatch} />
             }
             if (i === 0) {
-              return <Button id={j} value={value} color="grey" dispatch={dispatch} />
+              return <Button value={value} color="grey" dispatch={dispatch} />
             }
-            return <Button id={j} value={value} color="lightgrey" dispatch={dispatch} />
+            return <Button value={value} color="lightgrey" dispatch={dispatch} />
           })}
         </div>
       ))}

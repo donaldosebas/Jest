@@ -31,7 +31,7 @@ describe('General Calculator Test Functions', () => {
     render(<Entry />)
     const result = screen.getByDisplayValue('0', { selector: 'input' })
     const button2 = screen.getByText('2', { selector: 'button' })
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 10; i += 1) {
       userEvent.click(button2)
     }
     expect(result).toHaveValue('222222222')
@@ -43,11 +43,11 @@ describe('General Calculator Test Functions', () => {
     const buttonMultiply = screen.getByText('×', { selector: 'button' })
     const button7 = screen.getByText('7', { selector: 'button' })
     const buttonEquals = screen.getByText('=', { selector: 'button' })
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 8; i += 1) {
       userEvent.click(button2)
     }
     userEvent.click(buttonMultiply)
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 8; i += 1) {
       userEvent.click(button7)
     }
     userEvent.click(buttonEquals)

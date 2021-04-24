@@ -37,7 +37,7 @@ const Button = ({
     }
   }
   const onClick = () => {
-    dispatch({ action: 'VALUE', value })
+    dispatch({ action: typeof (value) === 'string' ? 'OPERATOR' : 'VALUE', value })
   }
   return (
     <button
